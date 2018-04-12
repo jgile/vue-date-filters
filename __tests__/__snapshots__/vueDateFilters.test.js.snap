@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ExampleComponent can mount 1`] = `
+exports[`VueDateFilters can mount 1`] = `
 "
             <div id=\\"app\\"><h3>Time</h3> <table><tbody><tr><td>time</td> <td>12:00 am</td></tr> <tr><td>shortTime</td> <td>12:00</td></tr> <tr><td>longTime</td> <td>12:00:00 am</td></tr></tbody></table> <br> <h3>Date</h3> <table><tbody><tr><td>date</td> <td>2018-04-05</td></tr> <tr><td>shortDate</td> <td>2018-4-5</td></tr> <tr><td>writtenDate</td> <td>Apr 5th, 2018</td></tr></tbody></table> <br> <h3>DateTime</h3> <table><tbody><tr><td>dateTime</td> <td>2018-04-05 12:00 am</td></tr> <tr><td>shortDateTime</td> <td>2018-4-5 12:00 am</td></tr> <tr><td>writtenDateTime</td> <td>Apr 5th, 2018, 12:00 am</td></tr></tbody></table> <h3>Other</h3> <table><tbody><tr><td>utcToLocal</td> <td>\\"2018-04-05T00:00:00.000Z\\"</td></tr> <tr><td>localToUtc</td> <td>\\"2018-04-05T05:00:00.000Z\\"</td></tr></tbody></table></div>
         "
