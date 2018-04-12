@@ -1,7 +1,5 @@
 import VueDateFilters from '../src';
 import Vue from 'vue/dist/vue.js';
-import moment from "moment-timezone";
-moment.tz.setDefault('CST');
 
 describe('VueDateFilters', () => {
     Vue.use(VueDateFilters);
@@ -60,8 +58,6 @@ describe('VueDateFilters', () => {
                         <td>{{ theDate | writtenDateTime }}</td>
                     </tr>
                 </table>
-
-
                 
                 <h3>Other</h3>
                 <table>

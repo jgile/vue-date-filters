@@ -8,14 +8,16 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:9.7.1
-
+        environment:
+           TZ: "/usr/share/zoneinfo/America/Chicago"
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
-
+    environment:
+      TZ: "/usr/share/zoneinfo/America/Chicago"
     steps:
       - checkout
 
