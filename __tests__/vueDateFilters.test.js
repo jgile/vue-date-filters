@@ -1,7 +1,7 @@
 import VueDateFilters from '../src';
 import Vue from 'vue/dist/vue.js';
 
-describe('ExampleComponent', () => {
+describe('VueDateFilters', () => {
     Vue.use(VueDateFilters);
 
     beforeEach(() => {
