@@ -2,6 +2,7 @@
 
 [![Latest Version on NPM](https://img.shields.io/npm/v/package_name.svg?style=flat-square)](https://npmjs.com/package/vue-date-filters)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![CircleCI](https://circleci.com/gh/jgile/vue-date-filters.svg?style=svg)](https://circleci.com/gh/jgile/vue-date-filters)
 
 A Vue.js plugin to display dates, datetimes, and times.  Uses moment.js.
 
