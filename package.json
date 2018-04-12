@@ -1,6 +1,6 @@
 {
   "name": "vue-date-filters",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Filters for formattins date, datetime, and time.",
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
