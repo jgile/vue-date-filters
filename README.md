@@ -71,3 +71,8 @@ If you discover any security related issues, please contact John Gile.
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## Credits
+
+- [John Gile](https://github.com/jgile)
+- [All Contributors](../../contributors)
