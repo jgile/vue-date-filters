@@ -1,5 +1,7 @@
 import VueDateFilters from '../src';
 import Vue from 'vue/dist/vue.js';
+import moment from "moment-timezone";
+moment.tz.setDefault('CST');
 
 describe('VueDateFilters', () => {
     Vue.use(VueDateFilters);
