@@ -1,8 +1,22 @@
 import _ from 'lodash';
 import moment from 'moment';
 
-const VueDates = {
+const VueDateFilters = {
     install(Vue, options) {
+
+        const formatDate = (date, format) => {
+            if (moment.isMoment(date)) {
+                return date.format(format);
+            } else {
+                date = _.get(date, "date", date).replace('.000000', '');
+
+                if (moment(date, 'YYYY-MM-DD HH:mm:SS').format('YYYY-MM-DD HH:mm:SS') === date) {
+                    return moment.utc(date, 'YYYY-MM-DD HH:mm:SS').format(format);
+                }
+
+                return moment.utc(date).format(format);
+            }
+        };
 
         const globalOptions = _.assign({
             local: true,
@@ -10,7 +24,7 @@ const VueDates = {
                 datetime: {
                     written: {
                         small: "MMM Do, h:mm a", // Jan 4th, 10:33 am
-                        medium: "ddd, MMM Do, h:mm a", // Thur, Jan 4th, 10:33 am
+                        medium: "MMM Do, YYYY, h:mm a", // Jan 4th, 1999, 10:33 am
                         large: "dddd, MMMM Do YYYY, h:mm a", // Thursday, January 4th 1965, 10:33 am
                     },
                     small: "YY-M-D h:mm a", // 65-12-1 10:35 am
@@ -20,7 +34,7 @@ const VueDates = {
                 date: {
                     written: {
                         small: "MMM Do", // Jan 4th
-                        medium: "ddd, MMM Do", // Thur, Jan 4th
+                        medium: "MMM Do, YYYY", // Jan 4th, YYYY
                         large: "dddd, MMMM Do YYYY" // Thursday, January 4th 1965
                     },
                     small: "YY-M-D", // 65-12-1
@@ -35,7 +49,6 @@ const VueDates = {
             }
         }, _.defaultTo(options, {}));
 
-
         Vue.mixin({
             filters: {
                 /**
@@ -43,15 +56,15 @@ const VueDates = {
                  */
                 time(value) {
                     if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.date.medium);
+                    return formatDate(value, globalOptions.format.time.medium);
                 },
                 shortTime(value) {
                     if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.date.medium);
+                    return formatDate(value, globalOptions.format.time.small);
                 },
                 longTime(value) {
                     if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.time.large);
+                    return formatDate(value, globalOptions.format.time.large);
                 },
 
                 /**
@@ -59,19 +72,15 @@ const VueDates = {
                  */
                 date(value) {
                     if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.date.large);
+                    return formatDate(value, globalOptions.format.date.large);
                 },
                 shortDate(value) {
                     if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.date.medium);
-                },
-                longDate(value) {
-                    if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.date.large);
+                    return formatDate(value, globalOptions.format.date.medium);
                 },
                 writtenDate(value) {
                     if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.date.written.small);
+                    return formatDate(value, globalOptions.format.date.written.medium);
                 },
 
                 /**
@@ -79,44 +88,29 @@ const VueDates = {
                  */
                 dateTime(value) {
                     if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.datetime.large);
+                    return formatDate(value, globalOptions.format.datetime.large);
                 },
                 shortDateTime(value) {
                     if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.datetime.small);
-                },
-                longDateTime(value) {
-                    if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.datetime.large);
+                    return formatDate(value, globalOptions.format.datetime.medium);
                 },
                 writtenDateTime(value) {
                     if (!value) return '';
-                    return this.$vueDates.formatDate(value, globalOptions.format.datetime.written.small);
+                    return formatDate(value, globalOptions.format.datetime.written.medium);
                 },
+
+                /**
+                 * Conversions
+                 */
+                utcToLocal(date, format) {
+                    return format ? moment.utc(date, format).local() : moment.utc(date).local();
+                },
+                localToUtc(date, format) {
+                    return format ? moment(date, format).utc() : moment(date).local();
+                }
             }
         });
-
-        Vue.prototype.$vueDates = {
-            cleanDate(date) {
-                return _.get(date, "date", date).replace('.000000', '');
-            },
-            formatDate(date, format) {
-                date = this.cleanDate(date);
-
-                if (moment(date, 'YYYY-MM-DD HH:mm:SS').format('YYYY-MM-DD HH:mm:SS') === date) {
-                    return this.toLocal(date, 'YYYY-MM-DD HH:mm:SS').format(format);
-                }
-
-                return this.toLocal(date).format(format);
-            },
-            toLocal(date, format) {
-                return format ? moment.utc(date, format).local() : moment.utc(date).local();
-            },
-            toUtc(date, format) {
-                return format ? moment.utc(date, format).local() : moment.utc(date).local();
-            }
-        };
     }
 };
 
-export default VueDates;
+export default VueDateFilters;

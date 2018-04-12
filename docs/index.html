@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title>package_name</title>
+
+    <style>
+
+        *,
+        *:after,
+        *:before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #efefef;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            font-size: 16px;
+            padding: 2em;
+        }
+
+        .page {
+            background-color: #fff;
+            max-width: 66em;
+            margin: 0 auto;
+            padding: 4em 2em;
+        }
+
+        td {
+            padding: 10px
+        }
+
+    </style>
+
+
+</head>
+<body>
+<div id="app" class="page">
+    <div>
+        <h3>Time</h3>
+        <table>
+            <tr>
+                <td>time</td>
+                <td>{{ theDate | time }}</td>
+            </tr>
+            <tr>
+                <td>shortTime</td>
+                <td>{{ theDate | shortTime }}</td>
+            </tr>
+            <tr>
+                <td>longTime</td>
+                <td>{{ theDate | longTime }}</td>
+            </tr>
+        </table>
+        <br/>
+
+        <h3>Date</h3>
+        <table>
+            <tr>
+                <td>date</td>
+                <td>{{ theDate | date }}</td>
+            </tr>
+            <tr>
+                <td>shortDate</td>
+                <td>{{ theDate | shortDate }}</td>
+            </tr>
+            <tr>
+                <td>writtenDate</td>
+                <td>{{ theDate | writtenDate }}</td>
+            </tr>
+        </table>
+        <br/>
+
+        <h3>DateTime</h3>
+        <table>
+
+            <tr>
+                <td>dateTime</td>
+                <td>{{ theDate | dateTime }}</td>
+            </tr>
+            <tr>
+                <td>shortDateTime</td>
+                <td>{{ theDate | shortDateTime }}</td>
+            </tr>
+            <tr>
+                <td>writtenDateTime</td>
+                <td>{{ theDate | writtenDateTime }}</td>
+            </tr>
+        </table>
+
+
+        <h3>Other</h3>
+        <table>
+            <tr>
+                <td>dateTime</td>
+                <td>{{ theDate | utcToLocal }}</td>
+            </tr>
+            <tr>
+                <td>shortDateTime</td>
+                <td>{{ theDate | localToUtc }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="/build/app.js"></script>
+</body>
+</html>
