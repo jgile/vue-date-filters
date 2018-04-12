@@ -60,14 +60,15 @@ describe('ExampleComponent', () => {
                 </table>
 
 
+                
                 <h3>Other</h3>
                 <table>
                     <tr>
-                        <td>dateTime</td>
+                        <td>utcToLocal</td>
                         <td>{{ theDate | utcToLocal }}</td>
                     </tr>
                     <tr>
-                        <td>shortDateTime</td>
+                        <td>localToUtc</td>
                         <td>{{ theDate | localToUtc }}</td>
                     </tr>
                 </table>
